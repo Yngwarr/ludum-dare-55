@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://csahdmph2aji4"]
+[gd_scene load_steps=18 format=3 uid="uid://csahdmph2aji4"]
 
 [ext_resource type="Script" path="res://src/Game.gd" id="1_wmfvw"]
 [ext_resource type="PackedScene" uid="uid://dqxmx546o8wko" path="res://scenes/Prompt.tscn" id="2_mk5hc"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://src/UI/PauseMenu.gd" id="2_xdcds"]
 [ext_resource type="PackedScene" uid="uid://dp02anwflcyv8" path="res://scenes/OptionsWindow.tscn" id="3_j5m3f"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="3_tg1ur"]
+[ext_resource type="AudioStream" uid="uid://6dcm2cmkhdu3" path="res://sfx/music.ogg" id="4_t0smp"]
 [ext_resource type="Script" path="res://src/UI/ShowPopupButton.gd" id="5_k0seo"]
 [ext_resource type="Script" path="res://src/UI/ChangeSceneButton.gd" id="6_2c0ui"]
 [ext_resource type="Script" path="res://src/Pause.gd" id="8_cpxey"]
@@ -46,6 +47,13 @@ script = ExtResource("2_x7p76")
 spawn_points = [NodePath("../HUD/Panel/Spawn"), NodePath("../HUD/Panel/Spawn2"), NodePath("../HUD/Panel/Spawn3"), NodePath("../HUD/Panel/Spawn4")]
 prompt_container = NodePath("../HUD/Panel")
 prompt_scene = ExtResource("2_mk5hc")
+song_path = "res://songs/song.json"
+
+[node name="StartTimer" type="Timer" parent="MelodyController"]
+one_shot = true
+
+[node name="Music" type="AudioStreamPlayer" parent="MelodyController"]
+stream = ExtResource("4_t0smp")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

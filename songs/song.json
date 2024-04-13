@@ -1,0 +1,71 @@
+{
+  "header": {
+    "keySignatures": [],
+    "meta": [],
+    "name": "",
+    "ppq": 960,
+    "tempos": [],
+    "timeSignatures": []
+  },
+  "tracks": [
+    {
+      "channel": 0,
+      "controlChanges": {
+        "123": [
+          {
+            "number": 123,
+            "ticks": 3840,
+            "time": 2,
+            "value": 0
+          }
+        ]
+      },
+      "pitchBends": [],
+      "instrument": {
+        "family": "piano",
+        "number": 0,
+        "name": "acoustic grand piano"
+      },
+      "name": "",
+      "notes": [
+        {
+          "duration": 0.125,
+          "durationTicks": 240,
+          "midi": 50,
+          "name": "D3",
+          "ticks": 0,
+          "time": 0,
+          "velocity": 0.7559055118110236
+        },
+        {
+          "duration": 0.125,
+          "durationTicks": 240,
+          "midi": 50,
+          "name": "D3",
+          "ticks": 960,
+          "time": 0.5,
+          "velocity": 0.7559055118110236
+        },
+        {
+          "duration": 0.125,
+          "durationTicks": 240,
+          "midi": 50,
+          "name": "D3",
+          "ticks": 1920,
+          "time": 1,
+          "velocity": 0.7559055118110236
+        },
+        {
+          "duration": 0.125,
+          "durationTicks": 240,
+          "midi": 50,
+          "name": "D3",
+          "ticks": 2880,
+          "time": 1.5,
+          "velocity": 0.7559055118110236
+        }
+      ],
+      "endOfTrackTicks": 3840
+    }
+  ]
+}

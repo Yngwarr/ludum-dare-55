@@ -2,7 +2,7 @@ class_name Prompt
 extends Node2D
 
 func _ready() -> void:
-    pass
+    add_to_group(&"prompt")
 
 func _process(delta: float) -> void:
     if !visible:

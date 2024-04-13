@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqxmx546o8wko"]
+[gd_scene load_steps=4 format=3 uid="uid://dqxmx546o8wko"]
 
 [ext_resource type="Texture2D" uid="uid://cbojivyq5kgh2" path="res://img/arrow_up.png" id="1_d0i5s"]
 [ext_resource type="Script" path="res://src/Prompt.gd" id="1_h5f3l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ivig6"]
+radius = 22.0
 
 [node name="Prompt" type="Node2D"]
 script = ExtResource("1_h5f3l")
@@ -10,3 +13,8 @@ script = ExtResource("1_h5f3l")
 texture_filter = 1
 scale = Vector2(4, 4)
 texture = ExtResource("1_d0i5s")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ivig6")
