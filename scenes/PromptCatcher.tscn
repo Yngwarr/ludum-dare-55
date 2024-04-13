@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://b264vceoqwp8k"]
+[gd_scene load_steps=3 format=3 uid="uid://b264vceoqwp8k"]
+
+[ext_resource type="Script" path="res://src/PromptCatcher.gd" id="1_sjt40"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvoq2"]
 size = Vector2(300, 64)
 
 [node name="PromptCatcher" type="Node2D"]
+script = ExtResource("1_sjt40")
 
 [node name="Area2D" type="Area2D" parent="."]
 

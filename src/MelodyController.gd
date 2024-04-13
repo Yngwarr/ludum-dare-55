@@ -10,7 +10,7 @@ extends Node
 
 @onready var music: AudioStreamPlayer = $Music
 
-var prompt_speed := 400
+var prompt_speed := 300
 var start_delay: float
 
 var running := false
@@ -63,6 +63,9 @@ func play() -> void:
 
 func spawn_prompt(idx: int) -> void:
     var prompt = prompt_scene.instantiate()
+
     prompt.pixels_per_second = prompt_speed
+    prompt.set_direction(idx)
     prompt.position = spawn_points[idx].position
+
     prompt_container.add_child(prompt)
