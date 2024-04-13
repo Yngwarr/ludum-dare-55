@@ -42,12 +42,14 @@ script = ExtResource("1_wmfvw")
 pause_ctl = NodePath("Pause")
 pause_menu = NodePath("PauseMenu")
 
-[node name="MelodyController" type="Node" parent="." node_paths=PackedStringArray("spawn_points", "prompt_container")]
+[node name="MelodyController" type="Node" parent="." node_paths=PackedStringArray("spawn_points", "prompt_container", "spawn_marker", "catch_marker")]
 script = ExtResource("2_x7p76")
 spawn_points = [NodePath("../HUD/Panel/Spawn"), NodePath("../HUD/Panel/Spawn2"), NodePath("../HUD/Panel/Spawn3"), NodePath("../HUD/Panel/Spawn4")]
 prompt_container = NodePath("../HUD/Panel")
 prompt_scene = ExtResource("2_mk5hc")
 song_path = "res://songs/song.json"
+spawn_marker = NodePath("../HUD/Panel/Spawn")
+catch_marker = NodePath("../HUD/Panel/PromptCatcher")
 
 [node name="StartTimer" type="Timer" parent="MelodyController"]
 one_shot = true

@@ -5,19 +5,44 @@ extends Node
 @export var prompt_container: Control
 @export var prompt_scene: PackedScene
 @export_file("*.json") var song_path: String
+@export var spawn_marker: Node2D
+@export var catch_marker: Node2D
 
-@onready var start_timer: Timer = $StartTimer
 @onready var music: AudioStreamPlayer = $Music
 
+var prompt_speed := 400
+var start_delay: float
+
 var running := false
-var progress: float = 0
+var music_playing := false
+var progress: float = -3.0
 var cursor: int = 0
 var notes
 
 func _ready() -> void:
     notes = prepare_song(song_path)
-    start_timer.timeout.connect(play)
-    start_timer.start()
+    start_delay = abs(spawn_marker.position.y - catch_marker.position.y) / prompt_speed
+
+    play()
+
+func _physics_process(delta: float) -> void:
+    if !running:
+        return
+
+    progress += delta
+
+    if !music_playing and progress >= 0:
+        music_playing = true
+        music.play()
+
+    if cursor >= len(notes):
+        return
+
+    if progress < notes[cursor]["time"] - start_delay:
+        return
+
+    cursor += 1
+    spawn_prompt(0)
 
 func prepare_song(path: String) -> Variant:
     var file := FileAccess.open(path, FileAccess.READ)
@@ -27,25 +52,10 @@ func prepare_song(path: String) -> Variant:
     return json["tracks"][0]["notes"]
 
 func play() -> void:
-    music.play()
     running = true
-
-func _physics_process(delta: float) -> void:
-    if !running:
-        return
-
-    progress += delta
-
-    if cursor >= len(notes):
-        return
-
-    if progress < notes[cursor]["time"]:
-        return
-
-    cursor += 1
-    spawn_prompt(0)
 
 func spawn_prompt(idx: int) -> void:
     var prompt = prompt_scene.instantiate()
+    prompt.pixels_per_second = prompt_speed
     prompt.position = spawn_points[idx].position
     prompt_container.add_child(prompt)
