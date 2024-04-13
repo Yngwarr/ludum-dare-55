@@ -1,4 +1,4 @@
-extends Node2D
+extends Node3D
 
 ## The game node, the beginning of all, the almighty entry point, the place,
 ## where your dreams come true! Adjust to your likings and may the code be with
@@ -10,5 +10,3 @@ extends Node2D
 func _ready() -> void:
 	pause_menu.modal_open.connect(pause_ctl.drop_next)
 	pause_menu.resume_pressed.connect(pause_ctl.unpause)
-
-	$AnimationPlayer.play("loop")
