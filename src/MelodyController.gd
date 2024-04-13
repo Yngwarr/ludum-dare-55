@@ -41,8 +41,15 @@ func _physics_process(delta: float) -> void:
     if progress < notes[cursor]["time"] - start_delay:
         return
 
+    spawn_prompt(note_to_prompt(notes[cursor]["name"]))
     cursor += 1
-    spawn_prompt(0)
+
+func note_to_prompt(note_name: String):
+    match note_name:
+        "D3": return 0
+        "G3": return 1
+        "F3": return 2
+        _: return 3
 
 func prepare_song(path: String) -> Variant:
     var file := FileAccess.open(path, FileAccess.READ)

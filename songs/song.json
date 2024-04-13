@@ -38,6 +38,24 @@
           "velocity": 0.7559055118110236
         },
         {
+          "duration": 0.0625,
+          "durationTicks": 120,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 240,
+          "time": 0.125,
+          "velocity": 0.7559055118110236
+        },
+        {
+          "duration": 0.0625,
+          "durationTicks": 120,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 480,
+          "time": 0.25,
+          "velocity": 0.7559055118110236
+        },
+        {
           "duration": 0.125,
           "durationTicks": 240,
           "midi": 50,
@@ -60,8 +78,44 @@
           "durationTicks": 240,
           "midi": 50,
           "name": "D3",
+          "ticks": 2400,
+          "time": 1.25,
+          "velocity": 0.7559055118110236
+        },
+        {
+          "duration": 0.125,
+          "durationTicks": 240,
+          "midi": 50,
+          "name": "D3",
           "ticks": 2880,
           "time": 1.5,
+          "velocity": 0.7559055118110236
+        },
+        {
+          "duration": 0.0625,
+          "durationTicks": 120,
+          "midi": 57,
+          "name": "A3",
+          "ticks": 3120,
+          "time": 1.625,
+          "velocity": 0.7559055118110236
+        },
+        {
+          "duration": 0.0625,
+          "durationTicks": 120,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 3360,
+          "time": 1.75,
+          "velocity": 0.7559055118110236
+        },
+        {
+          "duration": 0.0625,
+          "durationTicks": 120,
+          "midi": 50,
+          "name": "D3",
+          "ticks": 3600,
+          "time": 1.875,
           "velocity": 0.7559055118110236
         }
       ],
