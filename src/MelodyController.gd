@@ -6,7 +6,7 @@ signal prompt_missed
 signal started_playing
 
 @export var spawn_points: Array[Node2D]
-@export var prompt_container: Control
+@export var prompt_container: CanvasLayer
 @export var prompt_scene: PackedScene
 @export_file("*.json") var song_path: String
 @export var spawn_marker: Node2D

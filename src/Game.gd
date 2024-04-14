@@ -10,6 +10,7 @@ extends Node3D
 @export var progress: PatienceBar
 
 var patience := 50
+var is_over := false
 
 @onready var melody_ctl: MelodyController = $MelodyController
 @onready var anim: AnimationPlayer = $Animator
@@ -23,17 +24,22 @@ func _ready() -> void:
 	melody_ctl.started_playing.connect(start_sequence)
 
 func on_prompt_caught() -> void:
+	if is_over: return
+
 	patience += 5
 	progress.set_patience(patience)
 
 func on_prompt_missed() -> void:
+	if is_over: return
+
 	patience -= 3
 	progress.set_patience(patience)
 	if patience <= 0:
-		game_over()
+		is_over = true
+		game_over_seq()
 
 func start_sequence() -> void:
 	anim.play(&"start")
 
-func game_over() -> void:
+func game_over_seq() -> void:
 	anim.play(&"game_over")
