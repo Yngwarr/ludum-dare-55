@@ -8,11 +8,14 @@ const DOWN := 1
 const UP := 2
 const RIGHT := 3
 
+@export var arrow_textures: Array[Texture2D]
+
 var pixels_per_second := 200
 var action: StringName
 var catchable := false
 
 @onready var area: Area2D = $Area2D
+@onready var view: Sprite2D = $View
 
 func _ready() -> void:
 	add_to_group(&"prompt")
@@ -47,15 +50,13 @@ func disappear() -> void:
 	queue_free()
 
 func set_direction(direction: int) -> void:
+	view.texture=arrow_textures[direction]
 	match direction:
 		LEFT:
-			rotation_degrees = -90
 			action = &"game_left"
 		RIGHT:
-			rotation_degrees = 90
 			action = &"game_right"
 		DOWN:
-			rotation_degrees = 180
 			action = &"game_down"
 		UP:
 			action = &"game_up"

@@ -1,17 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqxmx546o8wko"]
+[gd_scene load_steps=8 format=3 uid="uid://dqxmx546o8wko"]
 
 [ext_resource type="Texture2D" uid="uid://cbojivyq5kgh2" path="res://img/arrow_up.png" id="1_d0i5s"]
 [ext_resource type="Script" path="res://src/Prompt.gd" id="1_h5f3l"]
+[ext_resource type="Texture2D" uid="uid://blvhe55c2qay5" path="res://img/Left.png" id="2_kgbhb"]
+[ext_resource type="Texture2D" uid="uid://b8oup5ly33ft6" path="res://img/Down.png" id="3_e817s"]
+[ext_resource type="Texture2D" uid="uid://c0mxnr8dvpslh" path="res://img/Up.png" id="4_fcy28"]
+[ext_resource type="Texture2D" uid="uid://de8cvyigq3m83" path="res://img/Right.png" id="5_nmn8i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ivig6"]
 radius = 22.0
 
 [node name="Prompt" type="Node2D"]
 script = ExtResource("1_h5f3l")
+arrow_textures = Array[Texture2D]([ExtResource("2_kgbhb"), ExtResource("3_e817s"), ExtResource("4_fcy28"), ExtResource("5_nmn8i")])
 
-[node name="ArrowUp" type="Sprite2D" parent="."]
+[node name="View" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(4, 4)
 texture = ExtResource("1_d0i5s")
 
 [node name="Area2D" type="Area2D" parent="."]

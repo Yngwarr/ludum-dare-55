@@ -20,52 +20,52 @@ var cursor: int = 0
 var notes
 
 func _ready() -> void:
-    notes = prepare_song(song_path)
-    start_delay = abs(spawn_marker.position.y - catch_marker.position.y) / prompt_speed
+	notes = prepare_song(song_path)
+	start_delay = abs(spawn_marker.position.y - catch_marker.position.y) / prompt_speed
 
-    play()
+	play()
 
 func _physics_process(delta: float) -> void:
-    if !running:
-        return
+	if !running:
+		return
 
-    progress += delta
+	progress += delta
 
-    if !music_playing and progress >= 0:
-        music_playing = true
-        music.play()
+	if !music_playing and progress >= 0:
+		music_playing = true
+		music.play()
 
-    if cursor >= len(notes):
-        return
+	if cursor >= len(notes):
+		return
 
-    if progress < notes[cursor]["time"] - start_delay:
-        return
+	if progress < notes[cursor]["time"] - start_delay:
+		return
 
-    spawn_prompt(note_to_prompt(notes[cursor]["name"]))
-    cursor += 1
+	spawn_prompt(note_to_prompt(notes[cursor]["name"]))
+	cursor += 1
 
 func note_to_prompt(note_name: String):
-    match note_name:
-        "D3": return 0
-        "G3": return 1
-        "F3": return 2
-        _: return 3
+	match note_name:
+		"D3": return 0
+		"G3": return 1
+		"F3": return 2
+		_: return 3
 
 func prepare_song(path: String) -> Variant:
-    var file := FileAccess.open(path, FileAccess.READ)
-    var content := file.get_as_text()
-    var json = JSON.parse_string(content)
+	var file := FileAccess.open(path, FileAccess.READ)
+	var content := file.get_as_text()
+	var json = JSON.parse_string(content)
 
-    return json["tracks"][0]["notes"]
+	return json["tracks"][0]["notes"]
 
 func play() -> void:
-    running = true
+	running = true
 
 func spawn_prompt(idx: int) -> void:
-    var prompt = prompt_scene.instantiate()
+	var prompt = prompt_scene.instantiate()
 
-    prompt.pixels_per_second = prompt_speed
-    prompt.set_direction(idx)
-    prompt.position = spawn_points[idx].position
+	prompt.pixels_per_second = prompt_speed
+	prompt.position = spawn_points[idx].position
 
-    prompt_container.add_child(prompt)
+	prompt_container.add_child(prompt)
+	prompt.set_direction(idx)
