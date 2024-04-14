@@ -38,11 +38,13 @@ func _input(event: InputEvent) -> void:
 		disappear()
 
 func on_area_entered(other: Area2D) -> void:
+	if dropping: return
 	if other.is_in_group(&"catcher"):
 		catchable = true
 		modulate = Color.GREEN
 
 func on_area_exited(other: Area2D) -> void:
+	if dropping: return
 	if other.is_in_group(&"catcher"):
 		catchable = false
 		# modulate = Color.RED
@@ -72,6 +74,6 @@ func drop() -> void:
 	tween.tween_property(self, "position", Vector2(position.x + (-5 + randf() * 10), position.y + 1000), .8)\
 		.set_ease(Tween.EASE_IN)\
 		.set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(self, "rotation_degrees", -90 + randf() * 180, .8)\
+	tween.parallel().tween_property(self, "rotation_degrees", -90 + randf() * 180, .8)\
 		.set_ease(Tween.EASE_IN)\
 		.set_trans(Tween.TRANS_CUBIC)
