@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://csahdmph2aji4"]
+[gd_scene load_steps=34 format=3 uid="uid://csahdmph2aji4"]
 
 [ext_resource type="Script" path="res://src/Game.gd" id="1_wmfvw"]
 [ext_resource type="PackedScene" uid="uid://dqxmx546o8wko" path="res://scenes/Prompt.tscn" id="2_mk5hc"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c3n3j80ocq8rl" path="res://models/cat.glb" id="17_vuwel"]
 [ext_resource type="PackedScene" uid="uid://cw3rviqk3sn1e" path="res://scenes/CircleParticles.tscn" id="19_56gtj"]
 [ext_resource type="Texture2D" uid="uid://eh8tbtic5po5" path="res://img/circle.png" id="19_v413s"]
+[ext_resource type="Texture2D" uid="uid://cnwqmjvip65xd" path="res://img/vintage-bookshelf.jpg" id="20_tr134"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ebkrb"]
 texture = ExtResource("5_wm4wy")
@@ -119,6 +120,14 @@ _data = {
 "RESET": SubResource("Animation_jkm7h"),
 "game_over": SubResource("Animation_twmif")
 }
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43bi2"]
+albedo_texture = ExtResource("20_tr134")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qsp6l"]
+material = SubResource("StandardMaterial3D_43bi2")
+size = Vector2(30, 20)
+orientation = 2
 
 [node name="Game" type="Node3D" node_paths=PackedStringArray("pause_ctl", "pause_menu", "game_over_screen", "progress")]
 script = ExtResource("1_wmfvw")
@@ -359,3 +368,15 @@ environment = SubResource("Environment_e5kqh")
 libraries = {
 "": SubResource("AnimationLibrary_mnlxe")
 }
+
+[node name="WallBack" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.10155, -16.8719)
+mesh = SubResource("PlaneMesh_qsp6l")
+
+[node name="WallRight" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15, 9.10155, -1.87189)
+mesh = SubResource("PlaneMesh_qsp6l")
+
+[node name="WallRight2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.00226884, 0, 0.999997, 0, 1, 0, -0.999997, 0, -0.00226884, -14.6906, 9.10155, -1.90978)
+mesh = SubResource("PlaneMesh_qsp6l")

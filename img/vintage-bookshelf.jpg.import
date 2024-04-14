@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c33nqeyn31qg4"
-path.s3tc="res://.godot/imported/Scroll.png-7b2255b03f2b965ead58db1056ab9ee8.s3tc.ctex"
+uid="uid://cnwqmjvip65xd"
+path.s3tc="res://.godot/imported/vintage-bookshelf.jpg-b49d31430c71a81ef03c7f4f3f2b196f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://img/Scroll.png"
-dest_files=["res://.godot/imported/Scroll.png-7b2255b03f2b965ead58db1056ab9ee8.s3tc.ctex"]
+source_file="res://img/vintage-bookshelf.jpg"
+dest_files=["res://.godot/imported/vintage-bookshelf.jpg-b49d31430c71a81ef03c7f4f3f2b196f.s3tc.ctex"]
 
 [params]
 
