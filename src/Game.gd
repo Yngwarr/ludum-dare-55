@@ -43,3 +43,4 @@ func start_sequence() -> void:
 
 func game_over_seq() -> void:
 	anim.play(&"game_over")
+	melody_ctl.game_over()

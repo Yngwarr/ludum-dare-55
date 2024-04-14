@@ -14,6 +14,7 @@ const RIGHT := 3
 var pixels_per_second := 200
 var action: StringName
 var catchable := false
+var dropping := false
 
 @onready var area: Area2D = $Area2D
 @onready var view: Sprite2D = $View
@@ -24,8 +25,8 @@ func _ready() -> void:
 	area.area_exited.connect(on_area_exited)
 
 func _process(delta: float) -> void:
-	if !visible:
-		return
+	if !visible: return
+	if dropping: return
 
 	translate(Vector2.UP * delta * pixels_per_second)
 
@@ -44,8 +45,9 @@ func on_area_entered(other: Area2D) -> void:
 func on_area_exited(other: Area2D) -> void:
 	if other.is_in_group(&"catcher"):
 		catchable = false
-		modulate = Color.RED
+		# modulate = Color.RED
 		missed.emit()
+		queue_free()
 
 func disappear() -> void:
 	caught.emit()
@@ -62,3 +64,14 @@ func set_direction(direction: int) -> void:
 			action = &"game_down"
 		UP:
 			action = &"game_up"
+
+func drop() -> void:
+	dropping = true
+
+	var tween := create_tween()
+	tween.tween_property(self, "position", Vector2(position.x + (-5 + randf() * 10), position.y + 1000), .8)\
+		.set_ease(Tween.EASE_IN)\
+		.set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "rotation_degrees", -90 + randf() * 180, .8)\
+		.set_ease(Tween.EASE_IN)\
+		.set_trans(Tween.TRANS_CUBIC)

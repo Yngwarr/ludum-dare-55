@@ -83,3 +83,14 @@ func on_prompt_caught() -> void:
 
 func on_prompt_missed() -> void:
 	prompt_missed.emit()
+
+func game_over() -> void:
+	running = false
+	drop_prompts()
+
+func drop_prompts() -> void:
+	for i in range(prompt_container.get_child_count()):
+		var c = prompt_container.get_child(i)
+		if not (c is Prompt):
+			continue
+		c.drop()
