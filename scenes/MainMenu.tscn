@@ -1,12 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbplqxkaqi83r"]
+[gd_scene load_steps=9 format=3 uid="uid://cbplqxkaqi83r"]
 
 [ext_resource type="Script" path="res://src/UI/MainMenu.gd" id="1_62wd7"]
+[ext_resource type="Texture2D" uid="uid://bj0pmnqbpyofn" path="res://img/scroll_wide.png" id="2_3shx6"]
 [ext_resource type="Script" path="res://src/UI/ChangeSceneButton.gd" id="2_5fb6k"]
 [ext_resource type="PackedScene" uid="uid://dp02anwflcyv8" path="res://scenes/OptionsWindow.tscn" id="2_eahdg"]
 [ext_resource type="Script" path="res://src/UI/ShowPopupButton.gd" id="3_pto1d"]
+[ext_resource type="FontFile" uid="uid://r57v0uwa05j4" path="res://font/FORTE.TTF" id="3_wv4rd"]
 [ext_resource type="Script" path="res://src/UI/QuitButton.gd" id="4_kgmp6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8bkd4"]
+font = ExtResource("3_wv4rd")
 font_size = 52
 
 [node name="MainMenu" type="Node2D" node_paths=PackedStringArray("first_to_focus")]
@@ -14,6 +17,14 @@ script = ExtResource("1_62wd7")
 first_to_focus = NodePath("Menu/Menu/Start")
 
 [node name="Menu" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Menu"]
+offset_left = 253.0
+offset_top = 233.0
+offset_right = 899.0
+offset_bottom = 631.0
+texture = ExtResource("2_3shx6")
+expand_mode = 1
 
 [node name="Header" type="Label" parent="Menu"]
 anchors_preset = 10
@@ -31,9 +42,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -300.0
+offset_left = -226.0
 offset_top = -324.0
-offset_right = 300.0
+offset_right = 224.0
 offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 0
