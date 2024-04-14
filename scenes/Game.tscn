@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://csahdmph2aji4"]
+[gd_scene load_steps=23 format=3 uid="uid://csahdmph2aji4"]
 
 [ext_resource type="Script" path="res://src/Game.gd" id="1_wmfvw"]
 [ext_resource type="PackedScene" uid="uid://dqxmx546o8wko" path="res://scenes/Prompt.tscn" id="2_mk5hc"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://src/UI/ShowPopupButton.gd" id="5_k0seo"]
 [ext_resource type="Texture2D" uid="uid://c33nqeyn31qg4" path="res://img/Scroll.png" id="5_wm4wy"]
 [ext_resource type="Script" path="res://src/UI/ChangeSceneButton.gd" id="6_2c0ui"]
+[ext_resource type="Texture2D" uid="uid://dlg6a0l2vchqr" path="res://img/Destination.png" id="6_bp2f6"]
 [ext_resource type="Texture2D" uid="uid://deebmfvogsx" path="res://img/progress_bg.png" id="7_y7vaw"]
 [ext_resource type="Texture2D" uid="uid://bafudxk212os7" path="res://img/progress_fill.png" id="8_6seoa"]
 [ext_resource type="Script" path="res://src/Pause.gd" id="8_cpxey"]
@@ -75,20 +76,57 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ebkrb")
 metadata/_edit_lock_ = true
 
+[node name="Destinations" type="CanvasGroup" parent="HUD/Panel"]
+
+[node name="Left" type="TextureRect" parent="HUD/Panel/Destinations"]
+offset_left = 54.0
+offset_top = 70.0
+offset_right = 126.0
+offset_bottom = 135.0
+rotation = -1.5708
+pivot_offset = Vector2(36, 33)
+texture = ExtResource("6_bp2f6")
+
+[node name="Down" type="TextureRect" parent="HUD/Panel/Destinations"]
+offset_left = 135.0
+offset_top = 70.0
+offset_right = 207.0
+offset_bottom = 135.0
+rotation = 3.14159
+pivot_offset = Vector2(36, 33)
+texture = ExtResource("6_bp2f6")
+
+[node name="Up" type="TextureRect" parent="HUD/Panel/Destinations"]
+offset_left = 212.0
+offset_top = 70.0
+offset_right = 284.0
+offset_bottom = 135.0
+pivot_offset = Vector2(36, 33)
+texture = ExtResource("6_bp2f6")
+
+[node name="Right" type="TextureRect" parent="HUD/Panel/Destinations"]
+offset_left = 293.0
+offset_top = 70.0
+offset_right = 365.0
+offset_bottom = 135.0
+rotation = 1.5708
+pivot_offset = Vector2(36, 33)
+texture = ExtResource("6_bp2f6")
+
 [node name="PromptCatcher" parent="HUD/Panel" instance=ExtResource("2_vuer4")]
-position = Vector2(209, 86)
+position = Vector2(209, 90)
 
 [node name="Spawn" type="Marker2D" parent="HUD/Panel"]
-position = Vector2(110, 594)
+position = Vector2(90, 594)
 
 [node name="Spawn2" type="Marker2D" parent="HUD/Panel"]
-position = Vector2(174, 594)
+position = Vector2(167, 594)
 
 [node name="Spawn3" type="Marker2D" parent="HUD/Panel"]
-position = Vector2(238, 594)
+position = Vector2(248, 594)
 
 [node name="Spawn4" type="Marker2D" parent="HUD/Panel"]
-position = Vector2(302, 594)
+position = Vector2(329, 594)
 
 [node name="ProgressBG" type="NinePatchRect" parent="HUD"]
 offset_left = 519.0
