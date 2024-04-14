@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://csahdmph2aji4"]
+[gd_scene load_steps=25 format=3 uid="uid://csahdmph2aji4"]
 
 [ext_resource type="Script" path="res://src/Game.gd" id="1_wmfvw"]
 [ext_resource type="PackedScene" uid="uid://dqxmx546o8wko" path="res://scenes/Prompt.tscn" id="2_mk5hc"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bafudxk212os7" path="res://img/progress_fill.png" id="8_6seoa"]
 [ext_resource type="Script" path="res://src/Pause.gd" id="8_cpxey"]
 [ext_resource type="Texture2D" uid="uid://bmetb0g61y3bv" path="res://icon.svg" id="8_lyls7"]
+[ext_resource type="Texture2D" uid="uid://c6n72t2e7pj8u" path="res://img/cat_icon_happy.png" id="10_b6u88"]
 [ext_resource type="PackedScene" uid="uid://c3n3j80ocq8rl" path="res://models/cat.glb" id="17_vuwel"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ebkrb"]
@@ -129,22 +130,24 @@ position = Vector2(248, 594)
 [node name="Spawn4" type="Marker2D" parent="HUD/Panel"]
 position = Vector2(329, 594)
 
-[node name="ProgressBG" type="NinePatchRect" parent="HUD"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HUD"]
 offset_left = 519.0
 offset_top = 584.0
-offset_right = 1081.0
+offset_right = 988.0
 offset_bottom = 624.0
-texture = ExtResource("7_y7vaw")
-patch_margin_left = 20
-patch_margin_right = 20
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 20
+stretch_margin_right = 20
+texture_under = ExtResource("7_y7vaw")
+texture_progress = ExtResource("8_6seoa")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="HUD/ProgressBG"]
-layout_mode = 0
-offset_right = 97.0
-offset_bottom = 40.0
-texture = ExtResource("8_6seoa")
-patch_margin_left = 20
-patch_margin_right = 20
+[node name="Icon" type="TextureRect" parent="HUD/TextureProgressBar"]
+offset_left = -30.0
+offset_top = -19.0
+offset_right = 46.0
+offset_bottom = 46.0
+texture = ExtResource("10_b6u88")
 
 [node name="PauseMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("resume_button", "options_menu")]
 process_mode = 2
