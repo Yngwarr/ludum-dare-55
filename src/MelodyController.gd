@@ -46,9 +46,9 @@ func _physics_process(delta: float) -> void:
 
 func note_to_prompt(note_name: String):
 	match note_name:
-		"D3": return 0
-		"G3": return 1
-		"F3": return 2
+		"C4": return 0
+		"D4": return 1
+		"E4": return 2
 		_: return 3
 
 func prepare_song(path: String) -> Variant:

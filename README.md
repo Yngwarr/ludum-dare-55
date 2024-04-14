@@ -1,9 +1,9 @@
 # How to import songs?
 
 1. Make a MIDI-track for prompts. Use these notes:
-    - D3 for left;
-    - G3 for down;
-    - F3 for up;
+    - C4 for left;
+    - D4 for down;
+    - E4 for up;
     - Anything else for right.
 2. Use the "Export project MIDI..." action in Reaper.
 3. Export with these settings:
