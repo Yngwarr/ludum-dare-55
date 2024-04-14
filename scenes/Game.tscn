@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://csahdmph2aji4"]
+[gd_scene load_steps=22 format=3 uid="uid://csahdmph2aji4"]
 
 [ext_resource type="Script" path="res://src/Game.gd" id="1_wmfvw"]
 [ext_resource type="PackedScene" uid="uid://dqxmx546o8wko" path="res://scenes/Prompt.tscn" id="2_mk5hc"]
@@ -9,9 +9,15 @@
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="3_tg1ur"]
 [ext_resource type="AudioStream" uid="uid://6dcm2cmkhdu3" path="res://sfx/music.ogg" id="4_t0smp"]
 [ext_resource type="Script" path="res://src/UI/ShowPopupButton.gd" id="5_k0seo"]
+[ext_resource type="Texture2D" uid="uid://c33nqeyn31qg4" path="res://img/Scroll.png" id="5_wm4wy"]
 [ext_resource type="Script" path="res://src/UI/ChangeSceneButton.gd" id="6_2c0ui"]
+[ext_resource type="Texture2D" uid="uid://deebmfvogsx" path="res://img/progress_bg.png" id="7_y7vaw"]
+[ext_resource type="Texture2D" uid="uid://bafudxk212os7" path="res://img/progress_fill.png" id="8_6seoa"]
 [ext_resource type="Script" path="res://src/Pause.gd" id="8_cpxey"]
 [ext_resource type="Texture2D" uid="uid://bmetb0g61y3bv" path="res://icon.svg" id="8_lyls7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ebkrb"]
+texture = ExtResource("5_wm4wy")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v63bu"]
 shader = ExtResource("3_tg1ur")
@@ -66,10 +72,11 @@ anchor_bottom = 1.0
 offset_right = -736.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ebkrb")
 metadata/_edit_lock_ = true
 
 [node name="PromptCatcher" parent="HUD/Panel" instance=ExtResource("2_vuer4")]
-position = Vector2(212, 69)
+position = Vector2(209, 86)
 
 [node name="Spawn" type="Marker2D" parent="HUD/Panel"]
 position = Vector2(110, 594)
@@ -82,6 +89,23 @@ position = Vector2(238, 594)
 
 [node name="Spawn4" type="Marker2D" parent="HUD/Panel"]
 position = Vector2(302, 594)
+
+[node name="ProgressBG" type="NinePatchRect" parent="HUD"]
+offset_left = 519.0
+offset_top = 584.0
+offset_right = 1081.0
+offset_bottom = 624.0
+texture = ExtResource("7_y7vaw")
+patch_margin_left = 20
+patch_margin_right = 20
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HUD/ProgressBG"]
+layout_mode = 0
+offset_right = 97.0
+offset_bottom = 40.0
+texture = ExtResource("8_6seoa")
+patch_margin_left = 20
+patch_margin_right = 20
 
 [node name="PauseMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("resume_button", "options_menu")]
 process_mode = 2

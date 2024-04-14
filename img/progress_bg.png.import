@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blvhe55c2qay5"
-path="res://.godot/imported/Left.png-3cc8bdcda92e829a7c641962e45eec99.ctex"
+uid="uid://deebmfvogsx"
+path="res://.godot/imported/progress_bg.png-0d7884be6b28d36d586aed423be1437e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/Left.png"
-dest_files=["res://.godot/imported/Left.png-3cc8bdcda92e829a7c641962e45eec99.ctex"]
+source_file="res://img/progress_bg.png"
+dest_files=["res://.godot/imported/progress_bg.png-0d7884be6b28d36d586aed423be1437e.ctex"]
 
 [params]
 
