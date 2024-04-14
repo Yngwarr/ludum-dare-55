@@ -7,6 +7,7 @@ extends Node3D
 @export var pause_ctl: Pause
 @export var pause_menu: PauseMenu
 @export var progress: PatienceBar
+@export var destinations: Destinations
 
 var patience := 50
 var is_over := false
@@ -22,11 +23,12 @@ func _ready() -> void:
 	melody_ctl.prompt_missed.connect(on_prompt_missed)
 	melody_ctl.started_playing.connect(start_sequence)
 
-func on_prompt_caught() -> void:
+func on_prompt_caught(index: int) -> void:
 	if is_over: return
 
 	patience += 5
 	progress.set_patience(patience)
+	destinations.bounce(index)
 
 func on_prompt_missed() -> void:
 	if is_over: return

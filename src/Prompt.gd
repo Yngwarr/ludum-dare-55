@@ -1,7 +1,7 @@
 class_name Prompt
 extends Node2D
 
-signal caught
+signal caught(index: int)
 signal missed
 
 const LEFT := 0
@@ -13,11 +13,13 @@ const RIGHT := 3
 
 var pixels_per_second := 200
 var action: StringName
+var direction := 0
 var catchable := false
 var dropping := false
 
 @onready var area: Area2D = $Area2D
 @onready var view: Sprite2D = $View
+@onready var anim: AnimationPlayer = $Animator
 
 func _ready() -> void:
 	add_to_group(&"prompt")
@@ -41,7 +43,7 @@ func on_area_entered(other: Area2D) -> void:
 	if dropping: return
 	if other.is_in_group(&"catcher"):
 		catchable = true
-		modulate = Color.GREEN
+		# modulate = Color.GREEN
 
 func on_area_exited(other: Area2D) -> void:
 	if dropping: return
@@ -52,11 +54,13 @@ func on_area_exited(other: Area2D) -> void:
 		queue_free()
 
 func disappear() -> void:
-	caught.emit()
+	caught.emit(direction)
 	queue_free()
 
-func set_direction(direction: int) -> void:
-	view.texture=arrow_textures[direction]
+func set_direction(new_direction: int) -> void:
+	direction = new_direction
+	view.texture = arrow_textures[direction]
+
 	match direction:
 		LEFT:
 			action = &"game_left"

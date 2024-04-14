@@ -256,11 +256,12 @@ material = SubResource("StandardMaterial3D_43bi2")
 size = Vector2(30, 20)
 orientation = 2
 
-[node name="Game" type="Node3D" node_paths=PackedStringArray("pause_ctl", "pause_menu", "progress")]
+[node name="Game" type="Node3D" node_paths=PackedStringArray("pause_ctl", "pause_menu", "progress", "destinations")]
 script = ExtResource("1_wmfvw")
 pause_ctl = NodePath("Pause")
 pause_menu = NodePath("PauseMenu")
 progress = NodePath("HUD/PatienceBar")
+destinations = NodePath("HUD/Panel/Destinations")
 
 [node name="MelodyController" type="Node" parent="." node_paths=PackedStringArray("spawn_points", "prompt_container", "spawn_marker", "catch_marker")]
 script = ExtResource("2_x7p76")
@@ -300,7 +301,7 @@ position = Vector2(209, 90)
 position = Vector2(90, 594)
 
 [node name="Spawn2" type="Marker2D" parent="HUD/Panel"]
-position = Vector2(167, 594)
+position = Vector2(171, 594)
 
 [node name="Spawn3" type="Marker2D" parent="HUD/Panel"]
 position = Vector2(248, 594)

@@ -1,0 +1,124 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdvsvgd0jrfjh"]
+
+[ext_resource type="Script" path="res://src/DummyPrompt.gd" id="1_1e72o"]
+[ext_resource type="Texture2D" uid="uid://blvhe55c2qay5" path="res://img/Left.png" id="1_ptpe1"]
+
+[sub_resource type="Animation" id="Animation_68emg"]
+resource_name = "blow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_fht31"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_03unq"]
+_data = {
+"RESET": SubResource("Animation_fht31"),
+"blow": SubResource("Animation_68emg")
+}
+
+[sub_resource type="Gradient" id="Gradient_1irpt"]
+offsets = PackedFloat32Array(0, 0.986014)
+colors = PackedColorArray(0.635294, 0, 0.792157, 1, 0.490196, 0, 0.501961, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fhu0e"]
+gradient = SubResource("Gradient_1irpt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_83w7s"]
+particle_flag_disable_z = true
+radial_velocity_min = 10.0
+radial_velocity_max = 100.0
+gravity = Vector3(0, 98, 0)
+scale_min = 1.5
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_fhu0e")
+
+[node name="DummyPrompt" type="Node2D"]
+script = ExtResource("1_1e72o")
+
+[node name="View" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_ptpe1")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+root_node = NodePath("../View")
+libraries = {
+"": SubResource("AnimationLibrary_03unq")
+}
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_83w7s")
+one_shot = true
+explosiveness = 0.9

@@ -1,7 +1,7 @@
 class_name MelodyController
 extends Node
 
-signal prompt_caught
+signal prompt_caught(index: int)
 signal prompt_missed
 signal started_playing
 
@@ -78,8 +78,8 @@ func spawn_prompt(idx: int) -> void:
 	prompt_container.add_child(prompt)
 	prompt.set_direction(idx)
 
-func on_prompt_caught() -> void:
-	prompt_caught.emit()
+func on_prompt_caught(index: int) -> void:
+	prompt_caught.emit(index)
 
 func on_prompt_missed() -> void:
 	prompt_missed.emit()
