@@ -6,7 +6,7 @@ extends Node3D
 
 @export var pause_ctl: Pause
 @export var pause_menu: PauseMenu
-@export var progress: TextureProgressBar
+@export var progress: PatienceBar
 
 var patience := 50
 
@@ -21,8 +21,8 @@ func _ready() -> void:
 
 func on_prompt_caught() -> void:
 	patience += 5
-	progress.value = patience
+	progress.set_patience(patience)
 
 func on_prompt_missed() -> void:
 	patience -= 3
-	progress.value = patience
+	progress.set_patience(patience)

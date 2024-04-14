@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://csahdmph2aji4"]
+[gd_scene load_steps=26 format=3 uid="uid://csahdmph2aji4"]
 
 [ext_resource type="Script" path="res://src/Game.gd" id="1_wmfvw"]
 [ext_resource type="PackedScene" uid="uid://dqxmx546o8wko" path="res://scenes/Prompt.tscn" id="2_mk5hc"]
@@ -12,11 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://c33nqeyn31qg4" path="res://img/Scroll.png" id="5_wm4wy"]
 [ext_resource type="Script" path="res://src/UI/ChangeSceneButton.gd" id="6_2c0ui"]
 [ext_resource type="Texture2D" uid="uid://dlg6a0l2vchqr" path="res://img/Destination.png" id="6_bp2f6"]
-[ext_resource type="Texture2D" uid="uid://deebmfvogsx" path="res://img/progress_bg.png" id="7_y7vaw"]
-[ext_resource type="Texture2D" uid="uid://bafudxk212os7" path="res://img/progress_fill.png" id="8_6seoa"]
 [ext_resource type="Script" path="res://src/Pause.gd" id="8_cpxey"]
+[ext_resource type="PackedScene" uid="uid://j8jai3bbywh8" path="res://scenes/PatienceBar.tscn" id="8_ewn8s"]
 [ext_resource type="Texture2D" uid="uid://bmetb0g61y3bv" path="res://icon.svg" id="8_lyls7"]
-[ext_resource type="Texture2D" uid="uid://c6n72t2e7pj8u" path="res://img/cat_icon_happy.png" id="10_b6u88"]
 [ext_resource type="PackedScene" uid="uid://c3n3j80ocq8rl" path="res://models/cat.glb" id="17_vuwel"]
 [ext_resource type="Texture2D" uid="uid://eh8tbtic5po5" path="res://img/circle.png" id="19_v413s"]
 
@@ -49,7 +47,8 @@ ground_horizon_color = Color(0.45098, 0, 0.701961, 1)
 sky_material = SubResource("ProceduralSkyMaterial_4rlom")
 
 [sub_resource type="Environment" id="Environment_e5kqh"]
-background_mode = 2
+background_mode = 1
+background_color = Color(0.403922, 0, 0.564706, 1)
 sky = SubResource("Sky_io5nh")
 ssao_enabled = true
 sdfgi_enabled = true
@@ -58,7 +57,7 @@ sdfgi_enabled = true
 script = ExtResource("1_wmfvw")
 pause_ctl = NodePath("Pause")
 pause_menu = NodePath("PauseMenu")
-progress = NodePath("HUD/TextureProgressBar")
+progress = NodePath("HUD/PatienceBar")
 
 [node name="MelodyController" type="Node" parent="." node_paths=PackedStringArray("spawn_points", "prompt_container", "spawn_marker", "catch_marker")]
 script = ExtResource("2_x7p76")
@@ -139,27 +138,7 @@ position = Vector2(248, 594)
 [node name="Spawn4" type="Marker2D" parent="HUD/Panel"]
 position = Vector2(329, 594)
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="HUD"]
-offset_left = 519.0
-offset_top = 584.0
-offset_right = 988.0
-offset_bottom = 624.0
-value = 50.0
-nine_patch_stretch = true
-stretch_margin_left = 20
-stretch_margin_right = 20
-texture_under = ExtResource("7_y7vaw")
-texture_progress = ExtResource("8_6seoa")
-
-[node name="Icon" type="TextureRect" parent="HUD/TextureProgressBar"]
-texture_repeat = 1
-layout_mode = 0
-offset_left = -30.0
-offset_top = -19.0
-offset_right = 46.0
-offset_bottom = 46.0
-texture = ExtResource("10_b6u88")
-expand_mode = 1
+[node name="PatienceBar" parent="HUD" instance=ExtResource("8_ewn8s")]
 
 [node name="PauseMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("resume_button", "options_menu")]
 process_mode = 2

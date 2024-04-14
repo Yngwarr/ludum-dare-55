@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://j8jai3bbywh8"]
+
+[ext_resource type="Texture2D" uid="uid://deebmfvogsx" path="res://img/progress_bg.png" id="1_6igki"]
+[ext_resource type="Texture2D" uid="uid://bafudxk212os7" path="res://img/progress_fill.png" id="2_tgpm0"]
+[ext_resource type="Script" path="res://src/PatienceBar.gd" id="3_5gmgc"]
+[ext_resource type="Texture2D" uid="uid://c6n72t2e7pj8u" path="res://img/cat_icon_happy.png" id="3_mtvdb"]
+[ext_resource type="Texture2D" uid="uid://cj7u6x7tokbdf" path="res://img/cat_icon_neutral.png" id="5_dixms"]
+[ext_resource type="Texture2D" uid="uid://cm1a4hk6dw5yu" path="res://img/cat_icon_sad.png" id="6_fw2yx"]
+
+[node name="PatienceBar" type="TextureProgressBar"]
+offset_left = 519.0
+offset_top = 584.0
+offset_right = 988.0
+offset_bottom = 624.0
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 20
+stretch_margin_right = 20
+texture_under = ExtResource("1_6igki")
+texture_progress = ExtResource("2_tgpm0")
+script = ExtResource("3_5gmgc")
+happy_face = ExtResource("3_mtvdb")
+neutral_face = ExtResource("5_dixms")
+sad_face = ExtResource("6_fw2yx")
+
+[node name="Face" type="TextureRect" parent="."]
+texture_repeat = 1
+layout_mode = 0
+offset_left = -30.0
+offset_top = -19.0
+offset_right = 46.0
+offset_bottom = 46.0
+texture = ExtResource("3_mtvdb")
+expand_mode = 1
