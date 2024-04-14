@@ -3,6 +3,7 @@ extends Node
 
 signal prompt_caught
 signal prompt_missed
+signal started_playing
 
 @export var spawn_points: Array[Node2D]
 @export var prompt_container: Control
@@ -36,6 +37,7 @@ func _physics_process(delta: float) -> void:
 
 	if !music_playing and progress >= 0:
 		music_playing = true
+		started_playing.emit()
 		music.play()
 
 	if cursor >= len(notes):

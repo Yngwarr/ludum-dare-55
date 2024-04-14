@@ -20,6 +20,7 @@ func _ready() -> void:
 
 	melody_ctl.prompt_caught.connect(on_prompt_caught)
 	melody_ctl.prompt_missed.connect(on_prompt_missed)
+	melody_ctl.started_playing.connect(start_sequence)
 
 func on_prompt_caught() -> void:
 	patience += 5
@@ -30,6 +31,9 @@ func on_prompt_missed() -> void:
 	progress.set_patience(patience)
 	if patience <= 0:
 		game_over()
+
+func start_sequence() -> void:
+	anim.play(&"start")
 
 func game_over() -> void:
 	anim.play(&"game_over")
