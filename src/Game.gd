@@ -6,7 +6,6 @@ extends Node3D
 
 @export var pause_ctl: Pause
 @export var pause_menu: PauseMenu
-@export var game_over_screen: GameOverScreen
 @export var progress: PatienceBar
 
 var patience := 50

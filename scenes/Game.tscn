@@ -145,7 +145,7 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"show"
+"method": &"appear"
 }]
 }
 tracks/2/type = "method"
@@ -256,11 +256,10 @@ material = SubResource("StandardMaterial3D_43bi2")
 size = Vector2(30, 20)
 orientation = 2
 
-[node name="Game" type="Node3D" node_paths=PackedStringArray("pause_ctl", "pause_menu", "game_over_screen", "progress")]
+[node name="Game" type="Node3D" node_paths=PackedStringArray("pause_ctl", "pause_menu", "progress")]
 script = ExtResource("1_wmfvw")
 pause_ctl = NodePath("Pause")
 pause_menu = NodePath("PauseMenu")
-game_over_screen = NodePath("GameOverScreen")
 progress = NodePath("HUD/PatienceBar")
 
 [node name="MelodyController" type="Node" parent="." node_paths=PackedStringArray("spawn_points", "prompt_container", "spawn_marker", "catch_marker")]
@@ -310,6 +309,28 @@ position = Vector2(248, 594)
 position = Vector2(329, 594)
 
 [node name="PatienceBar" parent="HUD" instance=ExtResource("8_ewn8s")]
+
+[node name="Cheats" type="Panel" parent="HUD"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -584.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/Cheats"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="HUD/Cheats/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Die"
 
 [node name="PauseMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("resume_button", "options_menu")]
 process_mode = 2
@@ -381,9 +402,11 @@ dialog_text = "Do you want to quit to main menu?"
 dialog_autowrap = true
 cancel_button_text = "No"
 
-[node name="GameOverScreen" type="CanvasLayer" parent="."]
+[node name="GameOverScreen" type="CanvasLayer" parent="." node_paths=PackedStringArray("pause")]
+process_mode = 3
 visible = false
 script = ExtResource("15_0yr3b")
+pause = NodePath("../Pause")
 
 [node name="BackgroundBlur" type="TextureRect" parent="GameOverScreen"]
 material = SubResource("ShaderMaterial_v63bu")
@@ -452,6 +475,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.30082)
 mesh = SubResource("PlaneMesh_gmrp5")
 
 [node name="CircleParticles" parent="." instance=ExtResource("19_56gtj")]
+process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 0.00563733, 0.999984, 0, -0.999984, 0.00563733, 0, 2.52716, -7.77482)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -473,3 +497,5 @@ mesh = SubResource("PlaneMesh_qsp6l")
 [node name="WallRight2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.00226884, 0, 0.999997, 0, 1, 0, -0.999997, 0, -0.00226884, -14.6906, 9.10155, -1.90978)
 mesh = SubResource("PlaneMesh_qsp6l")
+
+[connection signal="pressed" from="HUD/Cheats/HBoxContainer/Button" to="." method="game_over_seq"]

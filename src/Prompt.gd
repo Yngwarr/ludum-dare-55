@@ -71,7 +71,7 @@ func drop() -> void:
 	dropping = true
 
 	var tween := create_tween()
-	tween.tween_property(self, "position", Vector2(position.x + (-5 + randf() * 10), position.y + 1000), .8)\
+	tween.tween_property(self, "position", Vector2(position.x + (-200 + randf() * 400), position.y + 1000), .8)\
 		.set_ease(Tween.EASE_IN)\
 		.set_trans(Tween.TRANS_CUBIC)
 	tween.parallel().tween_property(self, "rotation_degrees", -90 + randf() * 180, .8)\
