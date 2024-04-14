@@ -2,6 +2,7 @@ class_name Prompt
 extends Node2D
 
 signal caught
+signal missed
 
 const LEFT := 0
 const DOWN := 1
@@ -44,6 +45,7 @@ func on_area_exited(other: Area2D) -> void:
 	if other.is_in_group(&"catcher"):
 		catchable = false
 		modulate = Color.RED
+		missed.emit()
 
 func disappear() -> void:
 	caught.emit()

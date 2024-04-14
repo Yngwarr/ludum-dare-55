@@ -1,6 +1,9 @@
 class_name MelodyController
 extends Node
 
+signal prompt_caught
+signal prompt_missed
+
 @export var spawn_points: Array[Node2D]
 @export var prompt_container: Control
 @export var prompt_scene: PackedScene
@@ -15,7 +18,7 @@ var start_delay: float
 
 var running := false
 var music_playing := false
-var progress: float = -3.0
+var progress: float = -1.0
 var cursor: int = 0
 var notes
 
@@ -64,8 +67,17 @@ func play() -> void:
 func spawn_prompt(idx: int) -> void:
 	var prompt = prompt_scene.instantiate()
 
+	prompt.caught.connect(on_prompt_caught)
+	prompt.missed.connect(on_prompt_missed)
+
 	prompt.pixels_per_second = prompt_speed
 	prompt.position = spawn_points[idx].position
 
 	prompt_container.add_child(prompt)
 	prompt.set_direction(idx)
+
+func on_prompt_caught() -> void:
+	prompt_caught.emit()
+
+func on_prompt_missed() -> void:
+	prompt_missed.emit()

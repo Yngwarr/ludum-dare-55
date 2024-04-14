@@ -6,7 +6,23 @@ extends Node3D
 
 @export var pause_ctl: Pause
 @export var pause_menu: PauseMenu
+@export var progress: TextureProgressBar
+
+var patience := 50
+
+@onready var melody_ctl: MelodyController = $MelodyController
 
 func _ready() -> void:
 	pause_menu.modal_open.connect(pause_ctl.drop_next)
 	pause_menu.resume_pressed.connect(pause_ctl.unpause)
+
+	melody_ctl.prompt_caught.connect(on_prompt_caught)
+	melody_ctl.prompt_missed.connect(on_prompt_missed)
+
+func on_prompt_caught() -> void:
+	patience += 5
+	progress.value = patience
+
+func on_prompt_missed() -> void:
+	patience -= 3
+	progress.value = patience

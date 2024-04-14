@@ -58,10 +58,11 @@ sky = SubResource("Sky_io5nh")
 ssao_enabled = true
 sdfgi_enabled = true
 
-[node name="Game" type="Node3D" node_paths=PackedStringArray("pause_ctl", "pause_menu")]
+[node name="Game" type="Node3D" node_paths=PackedStringArray("pause_ctl", "pause_menu", "progress")]
 script = ExtResource("1_wmfvw")
 pause_ctl = NodePath("Pause")
 pause_menu = NodePath("PauseMenu")
+progress = NodePath("HUD/TextureProgressBar")
 
 [node name="MelodyController" type="Node" parent="." node_paths=PackedStringArray("spawn_points", "prompt_container", "spawn_marker", "catch_marker")]
 script = ExtResource("2_x7p76")
