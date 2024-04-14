@@ -6,11 +6,13 @@ extends Node3D
 
 @export var pause_ctl: Pause
 @export var pause_menu: PauseMenu
+@export var game_over_screen: GameOverScreen
 @export var progress: PatienceBar
 
 var patience := 50
 
 @onready var melody_ctl: MelodyController = $MelodyController
+@onready var anim: AnimationPlayer = $Animator
 
 func _ready() -> void:
 	pause_menu.modal_open.connect(pause_ctl.drop_next)
@@ -26,3 +28,8 @@ func on_prompt_caught() -> void:
 func on_prompt_missed() -> void:
 	patience -= 3
 	progress.set_patience(patience)
+	if patience <= 0:
+		game_over()
+
+func game_over() -> void:
+	anim.play(&"game_over")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://csahdmph2aji4"]
+[gd_scene load_steps=30 format=3 uid="uid://csahdmph2aji4"]
 
 [ext_resource type="Script" path="res://src/Game.gd" id="1_wmfvw"]
 [ext_resource type="PackedScene" uid="uid://dqxmx546o8wko" path="res://scenes/Prompt.tscn" id="2_mk5hc"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://src/Pause.gd" id="8_cpxey"]
 [ext_resource type="PackedScene" uid="uid://j8jai3bbywh8" path="res://scenes/PatienceBar.tscn" id="8_ewn8s"]
 [ext_resource type="Texture2D" uid="uid://bmetb0g61y3bv" path="res://icon.svg" id="8_lyls7"]
+[ext_resource type="Script" path="res://src/GameOverScreen.gd" id="15_0yr3b"]
 [ext_resource type="PackedScene" uid="uid://c3n3j80ocq8rl" path="res://models/cat.glb" id="17_vuwel"]
 [ext_resource type="Texture2D" uid="uid://eh8tbtic5po5" path="res://img/circle.png" id="19_v413s"]
 
@@ -53,10 +54,76 @@ sky = SubResource("Sky_io5nh")
 ssao_enabled = true
 sdfgi_enabled = true
 
-[node name="Game" type="Node3D" node_paths=PackedStringArray("pause_ctl", "pause_menu", "progress")]
+[sub_resource type="Animation" id="Animation_twmif"]
+resource_name = "game_over"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MelodyController/Music:pitch_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1.7411),
+"update": 0,
+"values": [1.0, 0.01]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverScreen")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MelodyController/Music")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_jkm7h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MelodyController/Music:pitch_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mnlxe"]
+_data = {
+"RESET": SubResource("Animation_jkm7h"),
+"game_over": SubResource("Animation_twmif")
+}
+
+[node name="Game" type="Node3D" node_paths=PackedStringArray("pause_ctl", "pause_menu", "game_over_screen", "progress")]
 script = ExtResource("1_wmfvw")
 pause_ctl = NodePath("Pause")
 pause_menu = NodePath("PauseMenu")
+game_over_screen = NodePath("GameOverScreen")
 progress = NodePath("HUD/PatienceBar")
 
 [node name="MelodyController" type="Node" parent="." node_paths=PackedStringArray("spawn_points", "prompt_container", "spawn_marker", "catch_marker")]
@@ -73,6 +140,7 @@ one_shot = true
 
 [node name="Music" type="AudioStreamPlayer" parent="MelodyController"]
 stream = ExtResource("4_t0smp")
+bus = &"Music"
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -210,6 +278,54 @@ dialog_text = "Do you want to quit to main menu?"
 dialog_autowrap = true
 cancel_button_text = "No"
 
+[node name="GameOverScreen" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("15_0yr3b")
+
+[node name="BackgroundBlur" type="TextureRect" parent="GameOverScreen"]
+material = SubResource("ShaderMaterial_v63bu")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_lyls7")
+
+[node name="Header" type="Label" parent="GameOverScreen"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 100.0
+offset_bottom = 175.0
+grow_horizontal = 2
+text = "Game over"
+label_settings = SubResource("LabelSettings_sgf64")
+horizontal_alignment = 1
+
+[node name="Menu" type="VBoxContainer" parent="GameOverScreen"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -324.0
+offset_right = 300.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Resume" type="Button" parent="GameOverScreen/Menu"]
+layout_mode = 2
+text = "Try again"
+script = ExtResource("6_2c0ui")
+next_scene_name = "res://scenes/Game.tscn"
+
+[node name="QuitToMenu" type="Button" parent="GameOverScreen/Menu"]
+layout_mode = 2
+text = "Quit to menu"
+script = ExtResource("6_2c0ui")
+next_scene_name = "res://scenes/MainMenu.tscn"
+
 [node name="Pause" type="Node" parent="." node_paths=PackedStringArray("pause_screen")]
 process_mode = 3
 script = ExtResource("8_cpxey")
@@ -234,3 +350,8 @@ mesh = SubResource("PlaneMesh_gmrp5")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_e5kqh")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mnlxe")
+}
