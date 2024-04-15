@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqxmx546o8wko"]
+[gd_scene load_steps=10 format=3 uid="uid://dqxmx546o8wko"]
 
 [ext_resource type="Script" path="res://src/Prompt.gd" id="1_h5f3l"]
 [ext_resource type="Texture2D" uid="uid://blvhe55c2qay5" path="res://img/Left.png" id="2_kgbhb"]
@@ -9,41 +9,29 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ivig6"]
 radius = 22.0
 
-[sub_resource type="Animation" id="Animation_nmwju"]
-resource_name = "blow"
-length = 1.2
+[sub_resource type="Animation" id="Animation_c4qa0"]
+resource_name = "disappear"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("View:scale")
-tracks/0/interp = 2
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(0, 0)]
+"values": [Vector2(1, 1), Vector2(1, 1e-05)]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GPUParticles2D:emitting")
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1.2),
+"times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -51,7 +39,7 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_s600q"]
+[sub_resource type="Animation" id="Animation_4yncf"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -65,40 +53,12 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GPUParticles2D:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_u7ejb"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y6c2a"]
 _data = {
-"RESET": SubResource("Animation_s600q"),
-"blow": SubResource("Animation_nmwju")
+"RESET": SubResource("Animation_4yncf"),
+"disappear": SubResource("Animation_c4qa0")
 }
-
-[sub_resource type="Gradient" id="Gradient_eh0sp"]
-offsets = PackedFloat32Array(0, 0.986014)
-colors = PackedColorArray(0.635294, 0, 0.792157, 1, 0.490196, 0, 0.501961, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ge8sm"]
-gradient = SubResource("Gradient_eh0sp")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_41wdt"]
-particle_flag_disable_z = true
-radial_velocity_min = 10.0
-radial_velocity_max = 100.0
-gravity = Vector3(0, 98, 0)
-scale_min = 1.5
-scale_max = 3.0
-color_ramp = SubResource("GradientTexture1D_ge8sm")
 
 [node name="Prompt" type="Node2D"]
 script = ExtResource("1_h5f3l")
@@ -115,12 +75,5 @@ shape = SubResource("CircleShape2D_ivig6")
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_u7ejb")
+"": SubResource("AnimationLibrary_y6c2a")
 }
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-emitting = false
-amount = 16
-process_material = SubResource("ParticleProcessMaterial_41wdt")
-one_shot = true
-explosiveness = 0.9

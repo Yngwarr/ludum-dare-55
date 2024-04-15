@@ -51,7 +51,9 @@ func on_area_exited(other: Area2D) -> void:
 		catchable = false
 		# modulate = Color.RED
 		missed.emit()
-		queue_free()
+		anim.play(&"disappear")
+		# done by the animation
+		# queue_free()
 
 func disappear() -> void:
 	caught.emit(direction)
