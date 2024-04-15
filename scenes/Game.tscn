@@ -17,8 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://bmetb0g61y3bv" path="res://icon.svg" id="8_lyls7"]
 [ext_resource type="Script" path="res://src/GameOverScreen.gd" id="15_0yr3b"]
 [ext_resource type="PackedScene" uid="uid://bfvfl56btyulo" path="res://scenes/cat.tscn" id="17_1pui5"]
-[ext_resource type="PackedScene" uid="uid://c3n3j80ocq8rl" path="res://models/cat.glb" id="17_vuwel"]
-[ext_resource type="PackedScene" path="res://scenes/CircleParticles.tscn" id="19_56gtj"]
+[ext_resource type="PackedScene" uid="uid://brk03h5iihpt" path="res://scenes/wizard.tscn" id="18_darwm"]
+[ext_resource type="PackedScene" uid="uid://cw3rviqk3sn1e" path="res://scenes/CircleParticles.tscn" id="19_56gtj"]
 [ext_resource type="Texture2D" uid="uid://eh8tbtic5po5" path="res://img/circle.png" id="19_v413s"]
 [ext_resource type="Texture2D" uid="uid://cuc8mvxih2i4i" path="res://img/books.png" id="20_qe4bf"]
 [ext_resource type="Texture2D" uid="uid://dpdy6k3ckkniw" path="res://img/wall.png" id="20_umtwd"]
@@ -313,6 +313,8 @@ visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ebkrb")
@@ -490,8 +492,8 @@ shadow_enabled = true
 [node name="cat" parent="." instance=ExtResource("17_1pui5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.35448, 0, -2.81108)
 
-[node name="wizard" parent="." instance=ExtResource("17_vuwel")]
-transform = Transform3D(1.79175, 0, -0.888614, 0, 2, 0, 0.888614, 0, 1.79175, -0.20896, 0, -6.80217)
+[node name="wizard" parent="." instance=ExtResource("18_darwm")]
+transform = Transform3D(0.892145, 0, -0.45175, 0, 1, 0, 0.45175, 0, 0.892145, -0.449428, 0, -6.78997)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.40803, 1.97946, 1.53886)
