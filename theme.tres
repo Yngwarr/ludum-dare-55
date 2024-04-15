@@ -1,4 +1,8 @@
-[gd_resource type="Theme" format=3 uid="uid://kg42ikejce6b"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://kg42ikejce6b"]
+
+[ext_resource type="FontFile" uid="uid://r57v0uwa05j4" path="res://font/FORTE.TTF" id="1_6kcry"]
 
 [resource]
 Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_6kcry")
+Label/fonts/font = ExtResource("1_6kcry")
