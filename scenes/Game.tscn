@@ -286,6 +286,8 @@ visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ebkrb")
@@ -401,11 +403,11 @@ dialog_text = "Do you want to quit to main menu?"
 dialog_autowrap = true
 cancel_button_text = "No"
 
-[node name="GameOverScreen" type="CanvasLayer" parent="." node_paths=PackedStringArray("pause")]
+[node name="GameOverScreen" type="CanvasLayer" parent="." node_paths=PackedStringArray("focused_button")]
 process_mode = 3
 visible = false
 script = ExtResource("15_0yr3b")
-pause = NodePath("../Pause")
+focused_button = NodePath("Menu/TryAgain")
 
 [node name="BackgroundBlur" type="TextureRect" parent="GameOverScreen"]
 material = SubResource("ShaderMaterial_v63bu")
@@ -439,7 +441,7 @@ offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Resume" type="Button" parent="GameOverScreen/Menu"]
+[node name="TryAgain" type="Button" parent="GameOverScreen/Menu"]
 layout_mode = 2
 text = "Try again"
 script = ExtResource("6_2c0ui")
