@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://csahdmph2aji4"]
+[gd_scene load_steps=40 format=3 uid="uid://csahdmph2aji4"]
 
 [ext_resource type="Script" path="res://src/Game.gd" id="1_wmfvw"]
 [ext_resource type="PackedScene" uid="uid://dqxmx546o8wko" path="res://scenes/Prompt.tscn" id="2_mk5hc"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://j8jai3bbywh8" path="res://scenes/PatienceBar.tscn" id="8_ewn8s"]
 [ext_resource type="Texture2D" uid="uid://bmetb0g61y3bv" path="res://icon.svg" id="8_lyls7"]
 [ext_resource type="Script" path="res://src/GameOverScreen.gd" id="15_0yr3b"]
+[ext_resource type="PackedScene" uid="uid://bfvfl56btyulo" path="res://scenes/cat.tscn" id="17_1pui5"]
 [ext_resource type="PackedScene" uid="uid://c3n3j80ocq8rl" path="res://models/cat.glb" id="17_vuwel"]
 [ext_resource type="PackedScene" uid="uid://cw3rviqk3sn1e" path="res://scenes/CircleParticles.tscn" id="19_56gtj"]
 [ext_resource type="Texture2D" uid="uid://eh8tbtic5po5" path="res://img/circle.png" id="19_v413s"]
@@ -297,8 +298,6 @@ visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1152.0
-offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ebkrb")
@@ -473,8 +472,8 @@ pause_screen = NodePath("../PauseMenu")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8.42509, -0.153688)
 shadow_enabled = true
 
-[node name="cat" parent="." instance=ExtResource("17_vuwel")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3364, 0, -2.78073)
+[node name="cat" parent="." instance=ExtResource("17_1pui5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.35448, 0, -2.81108)
 
 [node name="wizard" parent="." instance=ExtResource("17_vuwel")]
 transform = Transform3D(1.79175, 0, -0.888614, 0, 2, 0, 0.888614, 0, 1.79175, -0.20896, 0, -6.80217)
