@@ -21,12 +21,16 @@ func _ready() -> void:
 	pause_menu.resume_pressed.connect(pause_ctl.unpause)
 
 	melody_ctl.prompt_caught.connect(on_prompt_caught)
-	# melody_ctl.prompt_caught.connect(cat.dance)
 	melody_ctl.prompt_missed.connect(on_prompt_missed)
 	melody_ctl.started_playing.connect(start_sequence)
+	melody_ctl.start_dancing.connect(cat.prepare)
 
 func _input(event: InputEvent) -> void:
 	var direction := event_to_direction(event)
+
+	if direction == -1:
+		return
+
 	cat.dance(direction)
 
 func event_to_direction(event: InputEvent) -> int:

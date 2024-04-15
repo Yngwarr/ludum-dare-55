@@ -4,6 +4,9 @@ extends Node
 signal prompt_caught(index: int)
 signal prompt_missed
 signal started_playing
+signal start_dancing
+signal start_raving
+signal eternal_roar
 
 @export var spawn_points: Array[Node2D]
 @export var prompt_container: CanvasLayer
@@ -40,21 +43,51 @@ func _physics_process(delta: float) -> void:
 		started_playing.emit()
 		music.play()
 
+	process_note()
+	process_event()
+
+func process_note() -> void:
 	if cursor >= len(notes):
 		return
 
 	if progress < notes[cursor]["time"] - start_delay:
 		return
 
-	spawn_prompt(note_to_prompt(notes[cursor]["name"]))
+	var prompt = note_to_prompt(notes[cursor]["name"])
+	if prompt == -1:
+		return
+
+	spawn_prompt(prompt)
 	cursor += 1
+
+func process_event() -> void:
+	if cursor >= len(notes):
+		return
+
+	if progress < notes[cursor]["time"]:
+		return
+
+	match notes[cursor]["name"]:
+		"C3": start_dancing.emit()
+		"D3": start_raving.emit()
+		"E3": eternal_roar.emit()
+		_: return
+
+	cursor += 1
+
+func cast_event(note: String) -> void:
+	match note:
+		"C3": start_dancing.emit()
+		"D3": start_raving.emit()
+		"E3": eternal_roar.emit()
 
 func note_to_prompt(note_name: String):
 	match note_name:
 		"C4": return 0
 		"D4": return 1
 		"E4": return 2
-		_: return 3
+		"F4": return 3
+	return -1
 
 func prepare_song(path: String) -> Variant:
 	var file := FileAccess.open(path, FileAccess.READ)

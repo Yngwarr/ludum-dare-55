@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://brk03h5iihpt"]
+[gd_scene load_steps=2 format=3 uid="uid://ds3d5ux5eex81"]
 
 [ext_resource type="PackedScene" uid="uid://bqo14u5fh2ndd" path="res://models/wizard.glb" id="1_a5nnk"]
 
@@ -52,14 +52,12 @@ bones/29/rotation = Quaternion(0.0710525, -0.0107799, -0.0250925, 0.997099)
 bones/31/rotation = Quaternion(0.163286, 0.0157875, 0.108474, 0.98047)
 bones/31/scale = Vector3(1, 1, 1)
 bones/32/rotation = Quaternion(0.126152, -0.0259015, -0.0555535, 0.990115)
-bones/32/scale = Vector3(1, 1, 1)
 bones/33/rotation = Quaternion(0.184748, 0.0377338, 0.0405768, 0.981223)
 bones/33/scale = Vector3(1, 1, 1)
 bones/34/rotation = Quaternion(0.00122784, 0.00138646, -0.748624, 0.662992)
 bones/34/scale = Vector3(1, 1, 1)
 bones/35/rotation = Quaternion(0.0901751, -0.038454, -0.356166, 0.929266)
 bones/36/rotation = Quaternion(0.0452204, -0.0516167, -0.093396, 0.993261)
-bones/36/scale = Vector3(1, 1, 1)
 bones/37/position = Vector3(0.128625, 0.467159, -0.020149)
 bones/37/rotation = Quaternion(-0.0495202, 0.929707, 0.158396, 0.32879)
 bones/37/scale = Vector3(1, 1, 1)

@@ -9,6 +9,7 @@ func _ready() -> void:
     anim.play(&"IdleStay")
 
 func prepare() -> void:
+    dancing = true
     anim.play(&"IdleStay2DanceIdle")
     anim.queue(&"DanceIdle")
 
