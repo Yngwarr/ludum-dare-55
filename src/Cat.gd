@@ -3,6 +3,8 @@ extends Node3D
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 
+var dancing := false
+
 func _ready() -> void:
     anim.play(&"IdleStay")
 
@@ -11,6 +13,8 @@ func prepare() -> void:
     anim.queue(&"DanceIdle")
 
 func dance(index: int) -> void:
+    if not dancing: return
+
     var next_move: StringName
 
     match index:

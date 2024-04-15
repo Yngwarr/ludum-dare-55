@@ -21,14 +21,30 @@ func _ready() -> void:
 	pause_menu.resume_pressed.connect(pause_ctl.unpause)
 
 	melody_ctl.prompt_caught.connect(on_prompt_caught)
-	melody_ctl.prompt_caught.connect(cat.dance)
+	# melody_ctl.prompt_caught.connect(cat.dance)
 	melody_ctl.prompt_missed.connect(on_prompt_missed)
 	melody_ctl.started_playing.connect(start_sequence)
+
+func _input(event: InputEvent) -> void:
+	var direction := event_to_direction(event)
+	cat.dance(direction)
+
+func event_to_direction(event: InputEvent) -> int:
+	if event.is_action_pressed("game_left"):
+		return 0
+	if event.is_action_pressed("game_down"):
+		return 1
+	if event.is_action_pressed("game_up"):
+		return 2
+	if event.is_action_pressed("game_right"):
+		return 3
+	return -1
 
 func on_prompt_caught(index: int) -> void:
 	if is_over: return
 
 	patience += 5
+	patience = clamp(patience, 0, 100)
 	progress.set_patience(patience)
 	destinations.bounce(index)
 
