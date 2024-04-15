@@ -26,3 +26,10 @@ func dance(index: int) -> void:
 
     anim.play(next_move)
     anim.queue(&"DanceIdle")
+
+func victory() -> void:
+    anim.play(&"Dance2Win")
+    anim.queue(&"Win")
+
+func no_dancing() -> void:
+    dancing = false

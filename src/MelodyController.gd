@@ -7,6 +7,7 @@ signal started_playing
 signal start_dancing
 signal start_raving
 signal eternal_roar
+signal silenced
 
 @export var spawn_points: Array[Node2D]
 @export var prompt_container: CanvasLayer
@@ -23,7 +24,8 @@ var start_delay: float
 var running := false
 var music_playing := false
 var progress: float = -1.0
-var cursor: int = 0
+var cursor_future: int = 0
+var cursor_present: int = 0
 var notes
 
 func _ready() -> void:
@@ -43,43 +45,37 @@ func _physics_process(delta: float) -> void:
 		started_playing.emit()
 		music.play()
 
-	process_note()
 	process_event()
+	process_note()
 
 func process_note() -> void:
-	if cursor >= len(notes):
+	if cursor_future >= len(notes):
 		return
 
-	if progress < notes[cursor]["time"] - start_delay:
+	if progress < notes[cursor_future]["time"] - start_delay:
 		return
 
-	var prompt = note_to_prompt(notes[cursor]["name"])
-	if prompt == -1:
-		return
+	var prompt = note_to_prompt(notes[cursor_future]["name"])
 
-	spawn_prompt(prompt)
-	cursor += 1
+	if prompt >= 0:
+		spawn_prompt(prompt)
+
+	cursor_future += 1
 
 func process_event() -> void:
-	if cursor >= len(notes):
+	if cursor_present >= len(notes):
 		return
 
-	if progress < notes[cursor]["time"]:
+	if progress < notes[cursor_present]["time"]:
 		return
 
-	match notes[cursor]["name"]:
+	match notes[cursor_present]["name"]:
 		"C3": start_dancing.emit()
 		"D3": start_raving.emit()
 		"E3": eternal_roar.emit()
-		_: return
+		"F3": silenced.emit()
 
-	cursor += 1
-
-func cast_event(note: String) -> void:
-	match note:
-		"C3": start_dancing.emit()
-		"D3": start_raving.emit()
-		"E3": eternal_roar.emit()
+	cursor_present += 1
 
 func note_to_prompt(note_name: String):
 	match note_name:

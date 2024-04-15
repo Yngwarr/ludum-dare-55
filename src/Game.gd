@@ -9,6 +9,7 @@ extends Node3D
 @export var progress: PatienceBar
 @export var destinations: Destinations
 @export var cat: Cat
+@export var wizard: Wizard
 
 var patience := 50
 var is_over := false
@@ -23,7 +24,10 @@ func _ready() -> void:
 	melody_ctl.prompt_caught.connect(on_prompt_caught)
 	melody_ctl.prompt_missed.connect(on_prompt_missed)
 	melody_ctl.started_playing.connect(start_sequence)
-	melody_ctl.start_dancing.connect(cat.prepare)
+	melody_ctl.start_dancing.connect(start_dancing)
+	melody_ctl.start_raving.connect(start_raving)
+	melody_ctl.eternal_roar.connect(eternal_roar)
+	melody_ctl.silenced.connect(silenced)
 
 func _input(event: InputEvent) -> void:
 	var direction := event_to_direction(event)
@@ -32,6 +36,20 @@ func _input(event: InputEvent) -> void:
 		return
 
 	cat.dance(direction)
+
+func start_dancing() -> void:
+	anim.play(&"start_dancing")
+
+func start_raving() -> void:
+	anim.play(&"start_raving")
+	anim.queue(&"rave")
+
+func eternal_roar() -> void:
+	anim.play(&"eternal_roar")
+	anim.queue(&"roaring")
+
+func silenced() -> void:
+	anim.play(&"silence")
 
 func event_to_direction(event: InputEvent) -> int:
 	if event.is_action_pressed("game_left"):
