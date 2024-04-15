@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://csahdmph2aji4"]
+[gd_scene load_steps=39 format=3 uid="uid://csahdmph2aji4"]
 
 [ext_resource type="Script" path="res://src/Game.gd" id="1_wmfvw"]
 [ext_resource type="PackedScene" uid="uid://dqxmx546o8wko" path="res://scenes/Prompt.tscn" id="2_mk5hc"]
@@ -17,9 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://bmetb0g61y3bv" path="res://icon.svg" id="8_lyls7"]
 [ext_resource type="Script" path="res://src/GameOverScreen.gd" id="15_0yr3b"]
 [ext_resource type="PackedScene" uid="uid://c3n3j80ocq8rl" path="res://models/cat.glb" id="17_vuwel"]
-[ext_resource type="PackedScene" path="res://scenes/CircleParticles.tscn" id="19_56gtj"]
+[ext_resource type="PackedScene" uid="uid://cw3rviqk3sn1e" path="res://scenes/CircleParticles.tscn" id="19_56gtj"]
 [ext_resource type="Texture2D" uid="uid://eh8tbtic5po5" path="res://img/circle.png" id="19_v413s"]
-[ext_resource type="Texture2D" uid="uid://cnwqmjvip65xd" path="res://img/vintage-bookshelf.jpg" id="20_tr134"]
+[ext_resource type="Texture2D" uid="uid://cuc8mvxih2i4i" path="res://img/books.png" id="20_qe4bf"]
+[ext_resource type="Texture2D" uid="uid://dpdy6k3ckkniw" path="res://img/wall.png" id="20_umtwd"]
+[ext_resource type="PackedScene" uid="uid://bnuij3pov2xjn" path="res://scenes/pot.tscn" id="22_tpt8q"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ebkrb"]
 texture = ExtResource("5_wm4wy")
@@ -249,10 +251,19 @@ _data = {
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43bi2"]
-albedo_texture = ExtResource("20_tr134")
+albedo_texture = ExtResource("20_qe4bf")
+uv1_scale = Vector3(3, 3, 3)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qsp6l"]
 material = SubResource("StandardMaterial3D_43bi2")
+size = Vector2(30, 20)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtjxd"]
+albedo_texture = ExtResource("20_umtwd")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4xlmx"]
+material = SubResource("StandardMaterial3D_jtjxd")
 size = Vector2(30, 20)
 orientation = 2
 
@@ -491,11 +502,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.10155, -16.8719)
 mesh = SubResource("PlaneMesh_qsp6l")
 
 [node name="WallRight" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15, 9.10155, -1.87189)
-mesh = SubResource("PlaneMesh_qsp6l")
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.6506, 9.10155, -1.87189)
+mesh = SubResource("PlaneMesh_4xlmx")
 
-[node name="WallRight2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.00226884, 0, 0.999997, 0, 1, 0, -0.999997, 0, -0.00226884, -14.6906, 9.10155, -1.90978)
-mesh = SubResource("PlaneMesh_qsp6l")
+[node name="WallLeft" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.00577708, 0, 0.999983, 0, 1, 0, -0.999983, 0, -0.00577708, -13.9201, 9.10155, -3.98871)
+mesh = SubResource("PlaneMesh_4xlmx")
+
+[node name="pot" parent="." instance=ExtResource("22_tpt8q")]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 6.91635, 1.12515, -10.4388)
 
 [connection signal="pressed" from="HUD/Cheats/HBoxContainer/Button" to="." method="game_over_seq"]
