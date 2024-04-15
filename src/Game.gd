@@ -8,6 +8,7 @@ extends Node3D
 @export var pause_menu: PauseMenu
 @export var progress: PatienceBar
 @export var destinations: Destinations
+@export var cat: Cat
 
 var patience := 50
 var is_over := false
@@ -20,6 +21,7 @@ func _ready() -> void:
 	pause_menu.resume_pressed.connect(pause_ctl.unpause)
 
 	melody_ctl.prompt_caught.connect(on_prompt_caught)
+	melody_ctl.prompt_caught.connect(cat.dance)
 	melody_ctl.prompt_missed.connect(on_prompt_missed)
 	melody_ctl.started_playing.connect(start_sequence)
 
