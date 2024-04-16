@@ -40,7 +40,7 @@ anchor_right = 1.0
 offset_top = 100.0
 offset_bottom = 175.0
 grow_horizontal = 2
-text = "Please Dance to Summon"
+text = "Magic Dance"
 label_settings = SubResource("LabelSettings_8bkd4")
 horizontal_alignment = 1
 
@@ -96,20 +96,17 @@ offset_top = 4.0
 offset_right = 361.0
 offset_bottom = 321.0
 bbcode_enabled = true
-text = "[center][b]Epic Megagame[/b][/center]
+text = "[center][b]Magic Dance[/b][/center]
 
 Brought to you by:
 [ul]
-[b]Yngvarr[/b] - code and game design.
-[b]Syudzius[/b] - art and also game design.
+[b]Yngvarr[/b] - code and game design, music, visual effects
+[b]Syudzius[/b] - 2d art, visual effects.
+[b]Owly[/b] - 3d models.
+[b]Shishandr[/b] - rigging, animation.
 [/ul]
 
-With use of these 3rd party assets:
-[ul]
-[b]White square[/b] by squaresausage [i](via [url=https://hardweird.net]his personal site[/url])[/i].
-[/ul]
-
-Special thanks to all my homies!"
+Special thanks to wolves of the Pixel Prophecy community. Awooo!"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
