@@ -96,17 +96,17 @@ offset_top = 4.0
 offset_right = 361.0
 offset_bottom = 321.0
 bbcode_enabled = true
-text = "[center][b]Magic Dance[/b][/center]
+text = "[center][b]To do magic, please dance[/b][/center]
 
 Brought to you by:
 [ul]
-[b]Yngvarr[/b] - code and game design, music, visual effects
-[b]Syudzius[/b] - 2d art, visual effects.
-[b]Owly[/b] - 3d models.
-[b]Shishandr[/b] - rigging, animation.
+[b]Yngvarr[/b] - code, music, visual effects.
+[b]Syudzius[/b] - 2D art, visual effects.
+[b]Owly[/b] - all of the 3D models.
+[b]Shishandr[/b] - rigging, these epic animations.
 [/ul]
 
-Special thanks to wolves of the Pixel Prophecy community. Awooo!"
+Special thanks to all my wolves from the Pixel Prophecy community. Awooo!"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
