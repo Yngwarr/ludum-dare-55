@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://csyin67ba2y"]
+[gd_scene load_steps=15 format=3 uid="uid://csyin67ba2y"]
 
 [ext_resource type="ArrayMesh" uid="uid://p6a11kh510fc" path="res://tres/frog.tres" id="1_atpgk"]
+[ext_resource type="Script" path="res://src/PropsRain.gd" id="1_nxci3"]
 [ext_resource type="ArrayMesh" uid="uid://dqoietvqqqbxn" path="res://tres/book_1.tres" id="2_bvyse"]
 [ext_resource type="ArrayMesh" uid="uid://ch6ct54t1oh3g" path="res://tres/book_2.tres" id="3_p7oid"]
 [ext_resource type="ArrayMesh" uid="uid://codirri2p8pgg" path="res://tres/book_3.tres" id="4_dwbu3"]
@@ -9,22 +10,6 @@
 [ext_resource type="ArrayMesh" uid="uid://ddw745cr5nns8" path="res://tres/bottle_1.tres" id="6_pmn1y"]
 [ext_resource type="ArrayMesh" uid="uid://dkiye5ynhhl4d" path="res://tres/bottle_2.tres" id="7_dojjt"]
 [ext_resource type="ArrayMesh" uid="uid://bk3u67lqtqvwv" path="res://tres/paper_3.tres" id="7_wkoyn"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kl542"]
-particle_flag_rotate_y = true
-emission_shape = 6
-emission_ring_axis = Vector3(0, 1, 0)
-emission_ring_height = 1.0
-emission_ring_radius = 8.0
-emission_ring_inner_radius = 7.0
-angle_min = -45.0
-angle_max = 90.0
-direction = Vector3(0, 1, 0)
-initial_velocity_max = 10.0
-angular_velocity_max = 90.0
-orbit_velocity_max = 0.5
-gravity = Vector3(0, 5, 0)
-tangential_accel_max = 5.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_awb5h"]
 particle_flag_rotate_y = true
@@ -69,56 +54,75 @@ linear_accel_max = 0.5
 scale_min = 0.2
 scale_max = 0.2
 
-[node name="Frog" type="GPUParticles3D"]
-amount = 2
-lifetime = 4.0
-process_material = SubResource("ParticleProcessMaterial_kl542")
-draw_pass_1 = ExtResource("1_atpgk")
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kl542"]
+particle_flag_rotate_y = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 8.0
+emission_ring_inner_radius = 7.0
+angle_min = -45.0
+angle_max = 90.0
+direction = Vector3(0, 1, 0)
+initial_velocity_max = 10.0
+angular_velocity_max = 90.0
+orbit_velocity_max = 0.5
+gravity = Vector3(0, 5, 0)
+tangential_accel_max = 5.0
+
+[node name="PropsRain" type="Node3D"]
+script = ExtResource("1_nxci3")
 
 [node name="Book1" type="GPUParticles3D" parent="."]
-amount = 2
+amount = 4
 lifetime = 4.0
 process_material = SubResource("ParticleProcessMaterial_awb5h")
 draw_pass_1 = ExtResource("2_bvyse")
 
 [node name="Book2" type="GPUParticles3D" parent="."]
-amount = 1
+amount = 4
 lifetime = 4.0
 process_material = SubResource("ParticleProcessMaterial_awb5h")
 draw_pass_1 = ExtResource("3_p7oid")
 
 [node name="Book3" type="GPUParticles3D" parent="."]
-amount = 1
+amount = 4
 lifetime = 4.0
 process_material = SubResource("ParticleProcessMaterial_awb5h")
 draw_pass_1 = ExtResource("4_dwbu3")
 
 [node name="Paper" type="GPUParticles3D" parent="."]
-amount = 1
+amount = 4
 lifetime = 4.0
 process_material = SubResource("ParticleProcessMaterial_0qbx7")
 draw_pass_1 = ExtResource("5_il0kq")
 
 [node name="Paper2" type="GPUParticles3D" parent="."]
-amount = 1
+amount = 4
 lifetime = 4.0
 process_material = SubResource("ParticleProcessMaterial_0qbx7")
 draw_pass_1 = ExtResource("6_bobdd")
 
 [node name="Paper3" type="GPUParticles3D" parent="."]
-amount = 1
+amount = 4
 lifetime = 4.0
 process_material = SubResource("ParticleProcessMaterial_0qbx7")
 draw_pass_1 = ExtResource("7_wkoyn")
 
 [node name="Bottle1" type="GPUParticles3D" parent="."]
-amount = 1
+amount = 4
 lifetime = 4.0
 process_material = SubResource("ParticleProcessMaterial_tb5kn")
 draw_pass_1 = ExtResource("6_pmn1y")
 
 [node name="Bottle2" type="GPUParticles3D" parent="."]
-amount = 1
+amount = 4
 lifetime = 4.0
 process_material = SubResource("ParticleProcessMaterial_tb5kn")
 draw_pass_1 = ExtResource("7_dojjt")
+
+[node name="Frog" type="GPUParticles3D" parent="."]
+amount = 4
+lifetime = 4.0
+process_material = SubResource("ParticleProcessMaterial_kl542")
+draw_pass_1 = ExtResource("1_atpgk")
