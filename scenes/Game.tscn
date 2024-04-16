@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://csahdmph2aji4"]
+[gd_scene load_steps=53 format=3 uid="uid://csahdmph2aji4"]
 
 [ext_resource type="Script" path="res://src/Game.gd" id="1_wmfvw"]
 [ext_resource type="PackedScene" uid="uid://dqxmx546o8wko" path="res://scenes/Prompt.tscn" id="2_mk5hc"]
@@ -16,11 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://j8jai3bbywh8" path="res://scenes/PatienceBar.tscn" id="8_ewn8s"]
 [ext_resource type="Texture2D" uid="uid://bmetb0g61y3bv" path="res://icon.svg" id="8_lyls7"]
 [ext_resource type="Script" path="res://src/GameOverScreen.gd" id="15_0yr3b"]
-[ext_resource type="Script" path="res://scenes/WinScreen.gd" id="16_8yiy0"]
 [ext_resource type="Texture2D" uid="uid://die5288a7xb62" path="res://img/cake.png" id="16_u3jrs"]
 [ext_resource type="PackedScene" uid="uid://bfvfl56btyulo" path="res://scenes/cat.tscn" id="17_1pui5"]
 [ext_resource type="PackedScene" uid="uid://ds3d5ux5eex81" path="res://scenes/wizard.tscn" id="18_darwm"]
-[ext_resource type="PackedScene" uid="uid://cw3rviqk3sn1e" path="res://scenes/CircleParticles.tscn" id="19_56gtj"]
+[ext_resource type="PackedScene" path="res://scenes/CircleParticles.tscn" id="19_56gtj"]
 [ext_resource type="Texture2D" uid="uid://eh8tbtic5po5" path="res://img/circle.png" id="19_v413s"]
 [ext_resource type="Texture2D" uid="uid://cuc8mvxih2i4i" path="res://img/books.png" id="20_qe4bf"]
 [ext_resource type="Texture2D" uid="uid://dpdy6k3ckkniw" path="res://img/wall.png" id="20_umtwd"]
@@ -196,61 +195,6 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(1.5, 1.5, 1.5)]
-}
-
-[sub_resource type="Animation" id="Animation_3car1"]
-resource_name = "eternal_roar"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CircleParticles:amount_ratio")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("wizard")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"ferocious_ritual"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("DirectionalLight3D:light_color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0.47451, 0.521569, 1)]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("PropsRain")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"all"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_3car1"]
@@ -486,7 +430,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_yfyyi"]
 resource_name = "silence"
-length = 3.0
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -506,7 +450,7 @@ tracks/1/path = NodePath("wizard")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.7, 2),
+"times": PackedFloat32Array(0.7, 3),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -523,7 +467,7 @@ tracks/2/path = NodePath("cat")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.7, 2),
+"times": PackedFloat32Array(0.7, 3),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -533,114 +477,18 @@ tracks/2/keys = {
 "method": &"victory"
 }]
 }
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CircleParticles:amount_ratio")
+tracks/3/path = NodePath("WinScreen")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.7),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("PropsRain")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(1.1),
+"times": PackedFloat32Array(5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"off"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_8k200"]
-resource_name = "rave"
-length = 6.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DirectionalLight3D:light_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(2, 4, 6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0.286275, 0, 0.870588, 1), Color(0.682353, 0, 0.858824, 1), Color(0, 0.466667, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_sdvyd"]
-resource_name = "roaring"
-length = 3.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DirectionalLight3D:light_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1, 2, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 0.192157, 0.580392, 1), Color(1, 0.341176, 0, 1), Color(1, 0.47451, 0.521569, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_yfyyi"]
-resource_name = "silence"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DirectionalLight3D:light_color")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("wizard")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.7, 2),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"enough"
-}, {
-"args": [],
-"method": &"victory"
-}]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("cat")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.7, 2),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"no_dancing"
-}, {
-"args": [],
-"method": &"victory"
+"method": &"show"
 }]
 }
 
@@ -1047,10 +895,11 @@ text = "Quit to menu"
 script = ExtResource("6_2c0ui")
 next_scene_name = "res://scenes/MainMenu.tscn"
 
-[node name="WinScreen" type="CanvasLayer" parent="."]
+[node name="WinScreen" type="CanvasLayer" parent="." node_paths=PackedStringArray("focused_button")]
 process_mode = 3
 visible = false
-script = ExtResource("16_8yiy0")
+script = ExtResource("15_0yr3b")
+focused_button = NodePath("Menu/TryAgain")
 
 [node name="BackgroundBlur" type="TextureRect" parent="WinScreen"]
 material = SubResource("ShaderMaterial_v63bu")
@@ -1094,13 +943,13 @@ grow_vertical = 0
 
 [node name="TryAgain" type="Button" parent="WinScreen/Menu"]
 layout_mode = 2
-text = "Try again"
+text = "Summon another one"
 script = ExtResource("6_2c0ui")
 next_scene_name = "res://scenes/Game.tscn"
 
 [node name="QuitToMenu" type="Button" parent="WinScreen/Menu"]
 layout_mode = 2
-text = "Quit to menu"
+text = "Take a break"
 script = ExtResource("6_2c0ui")
 next_scene_name = "res://scenes/MainMenu.tscn"
 
